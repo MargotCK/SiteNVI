@@ -21,6 +21,9 @@ class Historique
     private ?string $typeModifie = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $details = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $oldValue = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
@@ -28,6 +31,13 @@ class Historique
 
     #[ORM\Column]
     private ?\DateTimeImmutable $dateAction = null;
+
+    #[ORM\Column]
+    private int $entityId;
+
+    #[ORM\ManyToOne(inversedBy: 'historiques')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
 
     public function getId(): ?int
     {
@@ -54,6 +64,18 @@ class Historique
     public function setTypeModifie(string $typeModifie): static
     {
         $this->typeModifie = $typeModifie;
+
+        return $this;
+    }
+
+    public function getDetails(): ?string
+    {
+        return $this->details;
+    }
+
+    public function setDetails(?string $details): static
+    {
+        $this->details = $details;
 
         return $this;
     }
@@ -90,6 +112,30 @@ class Historique
     public function setDateAction(\DateTimeImmutable $dateAction): static
     {
         $this->dateAction = $dateAction;
+
+        return $this;
+    }
+
+    public function getEntityId(): int
+    {
+        return $this->entityId;
+    }
+
+    public function setEntityId(int $entityId): static
+    {
+        $this->entityId = $entityId;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+    
+    public function setUser(User $user): static
+    {
+        $this->user = $user;
 
         return $this;
     }
