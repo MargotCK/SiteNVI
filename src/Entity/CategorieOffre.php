@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CategorieOffreRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CategorieOffreRepository::class)]
@@ -13,14 +15,25 @@ class CategorieOffre
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 191,unique: true)]
     private ?string $nom = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 191,unique: true)]
     private ?string $slug = null;
 
-    #[ORM\Column]
-    private ?bool $actif = null;
+    #[ORM\Column(options: ['default' => true])]
+    private bool $actif = true;
+
+    /**
+     * @var Collection<int, Offre>
+     */
+    #[ORM\OneToMany(targetEntity: Offre::class, mappedBy: 'categorieOffre')]
+    private Collection $offres;
+
+    public function __construct()
+    {
+        $this->offres = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -51,7 +64,7 @@ class CategorieOffre
         return $this;
     }
 
-    public function isActif(): ?bool
+    public function isActif(): bool
     {
         return $this->actif;
     }
@@ -61,5 +74,32 @@ class CategorieOffre
         $this->actif = $actif;
 
         return $this;
+    }
+
+    /**
+     * @return Collection<int, Offre>
+     */
+    public function getOffres(): Collection
+    {
+        return $this->offres;
+    }
+
+    public function addOffre(Offre $offre): static
+    {
+        if (!$this->offres->contains($offre)) {
+            $this->offres->add($offre);
+            $offre->setCategorieOffre($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOffre(Offre $offre): static
+    {
+    
+        $this->offres->removeElement($offre);
+
+        return $this;
+
     }
 }

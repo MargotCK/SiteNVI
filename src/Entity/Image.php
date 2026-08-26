@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ImageRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ImageRepository::class)]
@@ -13,17 +15,42 @@ class Image
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $nom_fichier = null;
+    #[ORM\Column(length: 191,unique: true)]
+    private ?string $nomFichier = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 500)]
     private ?string $chemin = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $texte_alternatif = null;
+    #[ORM\Column(length: 500, nullable: true)]
+    private ?string $texteAlternatif = null;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $date_upload = null;
+    private ?\DateTimeImmutable $dateUpload = null;
+
+    /**
+     * @var Collection<int, Offre>
+     */
+    #[ORM\OneToMany(targetEntity: Offre::class, mappedBy: 'image')]
+    private Collection $offres;
+
+    /**
+     * @var Collection<int, ContenuEditorial>
+     */
+    #[ORM\OneToMany(targetEntity: ContenuEditorial::class, mappedBy: 'image')]
+    private Collection $contenuEditorials;
+
+    /**
+     * @var Collection<int, Carrousel>
+     */
+    #[ORM\OneToMany(targetEntity: Carrousel::class, mappedBy: 'image')]
+    private Collection $carrousels;
+
+    public function __construct()
+    {
+        $this->offres = new ArrayCollection();
+        $this->contenuEditorials = new ArrayCollection();
+        $this->carrousels = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -32,12 +59,12 @@ class Image
 
     public function getNomFichier(): ?string
     {
-        return $this->nom_fichier;
+        return $this->nomFichier;
     }
 
-    public function setNomFichier(string $nom_fichier): static
+    public function setNomFichier(string $nomFichier): static
     {
-        $this->nom_fichier = $nom_fichier;
+        $this->nomFichier = $nomFichier;
 
         return $this;
     }
@@ -56,25 +83,112 @@ class Image
 
     public function getTexteAlternatif(): ?string
     {
-        return $this->texte_alternatif;
+        return $this->texteAlternatif;
     }
 
-    public function setTexteAlternatif(?string $texte_alternatif): static
+    public function setTexteAlternatif(?string $texteAlternatif): static
     {
-        $this->texte_alternatif = $texte_alternatif;
+        $this->texteAlternatif = $texteAlternatif;
 
         return $this;
     }
 
     public function getDateUpload(): ?\DateTimeImmutable
     {
-        return $this->date_upload;
+        return $this->dateUpload;
     }
 
-    public function setDateUpload(\DateTimeImmutable $date_upload): static
+    public function setDateUpload(\DateTimeImmutable $dateUpload): static
     {
-        $this->date_upload = $date_upload;
+        $this->dateUpload = $dateUpload;
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, Offre>
+     */
+    public function getOffres(): Collection
+    {
+        return $this->offres;
+    }
+
+    public function addOffre(Offre $offre): static
+    {
+        if (!$this->offres->contains($offre)) {
+            $this->offres->add($offre);
+            $offre->setImage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOffre(Offre $offre): static
+    {
+        if ($this->offres->removeElement($offre)) {
+            // set the owning side to null (unless already changed)
+            if ($offre->getImage() === $this) {
+                $offre->setImage(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ContenuEditorial>
+     */
+    public function getContenuEditorials(): Collection
+    {
+        return $this->contenuEditorials;
+    }
+
+    public function addContenuEditorial(ContenuEditorial $contenuEditorial): static
+    {
+        if (!$this->contenuEditorials->contains($contenuEditorial)) {
+            $this->contenuEditorials->add($contenuEditorial);
+            $contenuEditorial->setImage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContenuEditorial(ContenuEditorial $contenuEditorial): static
+    {
+        if ($this->contenuEditorials->removeElement($contenuEditorial)) {
+            // set the owning side to null (unless already changed)
+            if ($contenuEditorial->getImage() === $this) {
+                $contenuEditorial->setImage(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Carrousel>
+     */
+    public function getCarrousels(): Collection
+    {
+        return $this->carrousels;
+    }
+
+    public function addCarrousel(Carrousel $carrousel): static
+    {
+        if (!$this->carrousels->contains($carrousel)) {
+            $this->carrousels->add($carrousel);
+            $carrousel->setImage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCarrousel(Carrousel $carrousel): static
+    {
+        $this->carrousels->removeElement($carrousel);
+
+        return $this;
+    }
+
+    
 }
