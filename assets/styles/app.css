@@ -1,4 +1,31 @@
 /* ==================================================
+    HEADER DU SITE
+   ================================================== */
+
+/*
+    Bandeau supérieur du site. Le fond est orange comme sur la maquette.
+*/
+.site-header {
+    background-color: orange;
+    padding: 20px 0;
+}
+
+/*
+    Le lien du logo ne doit pas être souligné.
+*/
+.site-logo-link {
+    text-decoration: none;
+}
+
+/*
+    Style temporaire du nom de l'association en attendant le vrai logo.
+*/
+.site-title {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+/* ==================================================
     STYLE GÉNÉRAL DE LA PAGE
    ================================================== */
 
