@@ -1,0 +1,163 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNvi"
+            aria-controls="navbarNvi"
+            aria-expanded="false"
+            aria-label="Ouvrir le menu"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNvi">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_home') }}">
+                        Accueil
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_adhesion') }}">
+                        Adhésion
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_qui_sommes_nous') }}">
+                        Qui sommes-nous ?
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle"
+                        href="#"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                            Nos actions
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-submenu">
+                            <a
+                                class="dropdown-item dropdown-toggle"
+                                href="{{ path('app_nos_cours') }}"
+                            >
+                                Nos cours
+                            </a>
+
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        Cours de créole
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        Cours de couture
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        Cours de bijoux en perles de rocaille
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        Cours de coiffe créole et maré tèt
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        Cours de peinture sur verre (à la demande)
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="{{ path('app_evenements') }}">
+                                Événements
+                            </a>
+
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        Colibryween
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        Fête du livre créole
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        Formation Éducation financière
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        Vide-dressing
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item" href="{{ path('app_manifestations') }}">
+                                Manifestations
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a
+                        class="nav-link dropdown-toggle"
+                        href="#"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                    >
+                        Le saviez-vous ?
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" href="{{ path('app_dates_memorables') }}">
+                                Dates mémorables
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item" href="{{ path('app_personnalites_inspirantes') }}">
+                                Personnalités inspirantes
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item" href="{{ path('app_ressources_educatives') }}">
+                                Ressources éducatives
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_faq') }}">
+                        FAQ
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</nav>

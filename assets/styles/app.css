@@ -1,3 +1,90 @@
+/* ==================================================
+    STYLE GÉNÉRAL DE LA PAGE
+   ================================================== */
+
 body {
     background-color: skyblue;
+}
+
+/* ==================================================
+    AVBAR - MENU PRINCIPAL
+   ================================================== */
+
+/* 
+    La liste des onglets occupe toute la largeur de la barre de navigation. Les onglets sont répartis régulièrement.
+*/
+.navbar-nav {
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+/*
+    Chaque onglet principal occupe une partie de l'espace disponible dans la navbar.
+*/
+.navbar-nav > .nav-item {
+    flex: 1;
+    margin: 0 5px;
+}
+
+/*
+Apparence des liens principaux :
+    - contour orange
+    - coins arrondis
+    - texte centré et en gras
+    - empêche le texte de passer sur deux lignes
+*/
+.navbar-nav > .nav-item > .nav-link {
+    border: 2px solid orange;
+    border-radius: 8px;
+    padding: 8px 14px;
+    text-align: center;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/*
+    Au survol d'un onglet principal, son fond devient orange clair.
+*/
+.navbar-nav > .nav-item > .nav-link:hover {
+    background-color: #ffd6a0;
+}
+
+/* ==================================================
+    MENUS DÉROULANTS
+   ================================================== */
+
+/*
+    Change la couleur de fond lorsqu'on survole un élément d'un menu déroulant.
+*/
+.dropdown-menu .dropdown-item:hover {
+    background-color: #ffd6a0;
+}
+
+/* ==================================================
+    SOUS-MENUS : NOS COURS / ÉVÉNEMENTS
+   ================================================== */
+
+/*
+    Le parent sert de point de référence pour positionner son sous-menu.
+*/
+.dropdown-submenu {
+    position: relative;
+}
+
+
+/*
+    Place le sous-menu à droite du menu parent. Il est caché par défaut.
+*/
+.dropdown-submenu > .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+    display: none;
+}
+
+/*
+    Affiche le sous-menu lorsque la souris survole "Nos cours" ou "Événements".
+*/
+.dropdown-submenu:hover > .dropdown-menu {
+    display: block;
 }
