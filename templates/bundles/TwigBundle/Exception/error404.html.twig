@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page introuvable{% endblock %}
+
+{% block body %}
+    <section class="error-page container text-center py-5">
+        <h1 class="display-1 fw-bold">404</h1>
+
+        <h2 class="mb-3">
+            Page introuvable
+        </h2>
+
+        <p class="mb-4">
+            La page que vous recherchez n’existe pas ou a été déplacée.
+        </p>
+
+        <a href="{{ path('app_home') }}" class="btn btn-warning">
+            Retour à l’accueil
+        </a>
+    </section>
+{% endblock %}

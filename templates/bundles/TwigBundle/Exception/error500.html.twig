@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Erreur interne{% endblock %}
+
+{% block body %}
+    <section class="error-page container text-center py-5">
+        <h1 class="display-1 fw-bold">500</h1>
+
+        <h2 class="mb-3">
+            Une erreur est survenue
+        </h2>
+
+        <p class="mb-4">
+            Une erreur inattendue s’est produite.
+            Veuillez réessayer ultérieurement.
+        </p>
+
+        <a href="{{ path('app_home') }}" class="btn btn-warning">
+            Retour à l’accueil
+        </a>
+    </section>
+{% endblock %}

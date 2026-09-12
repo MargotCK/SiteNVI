@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accès interdit{% endblock %}
+
+{% block body %}
+    <section class="error-page container text-center py-5">
+        <h1 class="display-1 fw-bold">403</h1>
+
+        <h2 class="mb-3">
+            Accès interdit
+        </h2>
+
+        <p class="mb-4">
+            Vous n’avez pas l’autorisation d’accéder à cette page.
+        </p>
+
+        <a href="{{ path('app_home') }}" class="btn btn-warning">
+            Retour à l’accueil
+        </a>
+    </section>
+{% endblock %}

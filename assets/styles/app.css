@@ -209,3 +209,24 @@ Apparence des liens principaux :
         text-align: center;
     }
 }
+/* ==================================================
+    PAGES D'ERREUR
+   ================================================== */
+
+.error-page {
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Numéro de l'erreur : 404, 403, 500 */
+.error-page .display-1 {
+    color: orange;
+}
+
+/* Bouton de retour à l'accueil */
+.error-page .btn {
+    font-weight: bold;
+}
