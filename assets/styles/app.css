@@ -3,38 +3,38 @@
    ================================================== */
 
 /*
-    Bandeau supérieur du site. Le fond est orange comme sur la maquette.
+    Bandeau orange situé au-dessus de la navbar.
+    Le logo est centré horizontalement et verticalement.
 */
 .site-header {
     background-color: orange;
-    padding: 20px 0;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /*
-    Le lien du logo ne doit pas être souligné.
+    Le lien entourant le logo ne doit pas être souligné.
 */
 .site-logo-link {
     text-decoration: none;
+    display: inline-block;
 }
 
 /*
-    Style temporaire du nom de l'association en attendant le vrai logo.
+    Taille du logo NVI.
+    object-fit permet de conserver ses proportions.
 */
-.site-title {
-    color: white;
-    font-size: 1.8rem;
-    font-weight: bold;
-}
-/* ==================================================
-    STYLE GÉNÉRAL DE LA PAGE
-   ================================================== */
-
-body {
-    background-color: skyblue;
+.site-logo {
+    width: 180px;
+    height: auto;
+    display: block;
 }
 
+
 /* ==================================================
-    AVBAR - MENU PRINCIPAL
+    NAVBAR - MENU PRINCIPAL
    ================================================== */
 
 /* 
@@ -114,4 +114,98 @@ Apparence des liens principaux :
 */
 .dropdown-submenu:hover > .dropdown-menu {
     display: block;
+}
+/* ==================================================
+    FOOTER
+   ================================================== */
+
+/* Bandeau principal du footer */
+.site-footer {
+    background-color: orange;
+    padding: 15px 20px;
+    margin-top: auto;
+}
+
+/* Liens du footer */
+.site-footer a {
+    color: #f7f2f2;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Effet au survol */
+.site-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Espacement entre les réseaux sociaux */
+.social-links {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+/* Taille des icônes des réseaux sociaux */
+.social-links a {
+    font-size: 1.5rem;
+}
+
+/* Adaptation sur téléphone */
+@media (max-width: 767px) {
+    .site-footer .row {
+        gap: 15px;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+}
+/* ==================================================
+    BANDEAU DE CONSENTEMENT AUX COOKIES
+   ================================================== */
+
+.cookie-banner {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1055;
+    background-color: #ffffff;
+    border-top: 2px solid orange;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
+    padding: 15px 20px;
+}
+
+.cookie-banner__content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.cookie-banner__text {
+    margin: 0;
+}
+
+.cookie-banner__actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 767px) {
+    .cookie-banner__content {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .cookie-banner__actions {
+        justify-content: center;
+    }
+
+    .cookie-banner__text {
+        text-align: center;
+    }
 }
