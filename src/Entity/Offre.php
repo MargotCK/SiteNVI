@@ -37,9 +37,6 @@ class Offre
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $publicVise = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $type = null;
-
     #[ORM\Column(options: ['default' => true])]
     private bool $actif = true;
 
@@ -156,18 +153,6 @@ class Offre
     public function setPublicVise(?string $publicVise): static
     {
         $this->publicVise = $publicVise;
-
-        return $this;
-    }
-
-    public function getType(): ?string
-    {
-        return $this->type;
-    }
-
-    public function setType(string $type): static
-    {
-        $this->type = $type;
 
         return $this;
     }
