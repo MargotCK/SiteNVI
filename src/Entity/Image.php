@@ -45,6 +45,9 @@ class Image
     #[ORM\OneToMany(targetEntity: Carrousel::class, mappedBy: 'image')]
     private Collection $carrousels;
 
+    #[ORM\Column(length: 191)]
+    private ?string $publicId = null;
+
     public function __construct()
     {
         $this->offres = new ArrayCollection();
@@ -186,6 +189,18 @@ class Image
     public function removeCarrousel(Carrousel $carrousel): static
     {
         $this->carrousels->removeElement($carrousel);
+
+        return $this;
+    }
+
+    public function getPublicId(): ?string
+    {
+        return $this->publicId;
+    }
+
+    public function setPublicId(string $publicId): static
+    {
+        $this->publicId = $publicId;
 
         return $this;
     }
