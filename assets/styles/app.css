@@ -243,17 +243,123 @@ Apparence des liens principaux :
 
 .home-carousel-image {
     height: 420px;
-    object-fit: cover;
+    object-fit: contain;
+    background-color: #fff;
 }
 
+/* Bouton "Découvrir" sans fond sombre */
 #homeCarousel .carousel-caption {
-    background-color: rgba(0, 0, 0, 0.55);
-    border-radius: 15px;
-    padding: 15px;
+    background: transparent;
+    padding: 0;
 }
+
+/* Flèches du carrousel */
+#homeCarousel .carousel-control-prev-icon,
+#homeCarousel .carousel-control-next-icon {
+    background-image: none;
+    width: auto;
+    height: auto;
+}
+
+#homeCarousel .carousel-control-prev-icon::after {
+    content: "‹";
+    color: orange;
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+#homeCarousel .carousel-control-next-icon::after {
+    content: "›";
+    color: orange;
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+
+/* ==================================================
+    PAGE D'ACCUEIL - LE BOUTON ADHESION
+   ================================================== */
+
+/* Bouton d'adhésion sous la carte horaires */
+.home-adhesion-button {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.home-adhesion-button .btn {
+    background-color: #0d6efd;
+    border: 3px solid orange;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.home-adhesion-button .btn:hover {
+    background-color: orange;
+    border-color: orange;
+    color: #fff;
+}
+
+
+/* ==================================================
+    PAGE D'ACCUEIL - VERSION MOBILE
+   ================================================== */
 
 @media (max-width: 767px) {
+
+    /* Taille du carrousel */
     .home-carousel-image {
         height: 250px;
+    }
+
+    /* Bouton d'adhésion */
+    .home-adhesion-button {
+        margin-top: 10px;
+    }
+
+    .home-adhesion-button .btn {
+        font-size: 0.85rem;
+        padding: 6px 12px;
+    }
+
+    /* Carte adresse / horaires */
+    .home-info-card {
+        width: 75%;
+        max-width: 280px;
+        max-height: 160px;
+        margin: 0 auto;
+        padding: 8px 10px;
+        overflow-y: auto;
+        border-radius: 15px;
+    }
+
+    .home-info-card h2,
+    .home-info-card h3 {
+        font-size: 0.95rem;
+        margin: 3px 0;
+    }
+
+    .home-info-card p {
+        font-size: 0.8rem;
+        margin: 3px 0;
+        line-height: 1.15;
+    }
+
+    .home-info-card hr {
+        margin: 4px 0;
+    }
+
+    /* Barre de défilement de la carte horaires */
+    .home-info-card::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .home-info-card::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .home-info-card::-webkit-scrollbar-thumb {
+        background-color: orange;
+        border-radius: 10px;
     }
 }

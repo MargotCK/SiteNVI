@@ -1,9 +1,66 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Offre{% endblock %}
+{% block title %}{{ offre.titre }}{% endblock %}
 
 {% block body %}
-    <div class="container mt-4">
-        <h1>{{ slug|replace({'-': ' '})|title }}</h1>
-    </div>
+    <section class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+
+                <h1 class="mb-4">
+                    {{ offre.titre }}
+                </h1>
+
+                {% if offre.image %}
+                    <div class="mb-4">
+                        <img
+                            src="{{ offre.image.chemin }}"
+                            alt="{{ offre.image.texteAlternatif ?? offre.titre }}"
+                            class="img-fluid rounded"
+                        >
+                    </div>
+                {% endif %}
+
+                <div class="mb-4">
+                    {{ offre.description|nl2br }}
+                </div>
+
+                {% if offre.horaires %}
+                    <p>
+                        <strong>Horaires :</strong>
+                        {{ offre.horaires }}
+                    </p>
+                {% endif %}
+
+                {% if offre.lieu %}
+                    <p>
+                        <strong>Lieu :</strong>
+                        {{ offre.lieu }}
+                    </p>
+                {% endif %}
+
+                {% if offre.niveau %}
+                    <p>
+                        <strong>Niveau :</strong>
+                        {{ offre.niveau }}
+                    </p>
+                {% endif %}
+
+                {% if offre.publicVise %}
+                    <p>
+                        <strong>Public visé :</strong>
+                        {{ offre.publicVise }}
+                    </p>
+                {% endif %}
+
+                {% if offre.categorieOffre %}
+                    <p>
+                        <strong>Catégorie :</strong>
+                        {{ offre.categorieOffre.nom }}
+                    </p>
+                {% endif %}
+
+            </div>
+        </div>
+    </section>
 {% endblock %}

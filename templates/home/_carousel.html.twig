@@ -20,15 +20,14 @@
                 <div class="carousel-item {{ loop.first ? 'active' : '' }}">
 
                     <img
-                        src="{{ asset(carrousel.image.chemin) }}"
+                        src="{{ carrousel.image.chemin }}"
                         class="d-block w-100 home-carousel-image"
                         alt="{{ carrousel.image.texteAlternatif ?? 'Image du carrousel' }}"
                     >
 
                     {% if carrousel.offre %}
                         <div class="carousel-caption">
-                            <h2>{{ carrousel.offre.titre }}</h2>
-
+                            
                             <a
                                 href="{{ path('app_offre_show', {
                                     'slug': carrousel.offre.slug
