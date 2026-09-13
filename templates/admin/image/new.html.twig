@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une image{% endblock %}
+
+{% block body %}
+    <section class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6">
+
+                <h1 class="mb-4 text-center">
+                    Ajouter une image
+                </h1>
+
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-success">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+
+                {{ form_start(form) }}
+
+                    <div class="mb-3">
+                        {{ form_label(form.fichier) }}
+                        {{ form_widget(form.fichier, {
+                            attr: {
+                                class: 'form-control'
+                            }
+                        }) }}
+                        {{ form_errors(form.fichier) }}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form_label(form.texteAlternatif) }}
+                        {{ form_widget(form.texteAlternatif, {
+                            attr: {
+                                class: 'form-control',
+                                rows: 4
+                            }
+                        }) }}
+                        {{ form_errors(form.texteAlternatif) }}
+                    </div>
+
+                    <button type="submit" class="btn btn-warning w-100">
+                        Envoyer l’image
+                    </button>
+
+                {{ form_end(form) }}
+
+            </div>
+        </div>
+    </section>
+{% endblock %}
