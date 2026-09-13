@@ -1,0 +1,78 @@
+{% if carrousels is not empty %}
+    <div id="homeCarousel" class="carousel slide" data-bs-ride="carousel">
+
+        <div class="carousel-indicators">
+            {% for carrousel in carrousels %}
+                <button
+                    type="button"
+                    data-bs-target="#homeCarousel"
+                    data-bs-slide-to="{{ loop.index0 }}"
+                    class="{{ loop.first ? 'active' : '' }}"
+                    {% if loop.first %}aria-current="true"{% endif %}
+                    aria-label="Diapositive {{ loop.index }}"
+                ></button>
+            {% endfor %}
+        </div>
+
+        <div class="carousel-inner">
+
+            {% for carrousel in carrousels %}
+                <div class="carousel-item {{ loop.first ? 'active' : '' }}">
+
+                    <img
+                        src="{{ asset(carrousel.image.chemin) }}"
+                        class="d-block w-100 home-carousel-image"
+                        alt="{{ carrousel.image.texteAlternatif ?? 'Image du carrousel' }}"
+                    >
+
+                    {% if carrousel.offre %}
+                        <div class="carousel-caption">
+                            <h2>{{ carrousel.offre.titre }}</h2>
+
+                            <a
+                                href="{{ path('app_offre_show', {
+                                    'slug': carrousel.offre.slug
+                                }) }}"
+                                class="btn btn-warning"
+                            >
+                                Découvrir
+                            </a>
+                        </div>
+
+                    {% elseif carrousel.contenuEditorial %}
+                        <div class="carousel-caption">
+                            <h2>{{ carrousel.contenuEditorial.titre }}</h2>
+                        </div>
+                    {% endif %}
+
+                </div>
+            {% endfor %}
+
+        </div>
+
+        <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#homeCarousel"
+            data-bs-slide="prev"
+        >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Précédent</span>
+        </button>
+
+        <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#homeCarousel"
+            data-bs-slide="next"
+        >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Suivant</span>
+        </button>
+
+    </div>
+{% else %}
+    <div class="alert alert-info text-center">
+        Aucun contenu n’est actuellement disponible dans le carrousel.
+    </div>
+{% endif %}

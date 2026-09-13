@@ -209,3 +209,51 @@ Apparence des liens principaux :
         text-align: center;
     }
 }
+/* ==================================================
+   PAGE D'ACCUEIL - INFORMATIONS PRATIQUES
+   ================================================== */
+
+.home-info-card {
+    background-color: #0d6efd;
+    color: white;
+    border: 3px solid orange;
+    border-radius: 35px;
+    padding: 25px 20px;
+}
+
+.home-info-card hr {
+    border-color: white;
+    opacity: 1;
+}
+
+.home-info-card .btn {
+    margin-top: 15px;
+    border: 3px solid orange;
+    font-weight: bold;
+}
+/* ==================================================
+   PAGE D'ACCUEIL - CARROUSEL
+   ================================================== */
+
+#homeCarousel {
+    border: 3px solid orange;
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+.home-carousel-image {
+    height: 420px;
+    object-fit: cover;
+}
+
+#homeCarousel .carousel-caption {
+    background-color: rgba(0, 0, 0, 0.55);
+    border-radius: 15px;
+    padding: 15px;
+}
+
+@media (max-width: 767px) {
+    .home-carousel-image {
+        height: 250px;
+    }
+}
