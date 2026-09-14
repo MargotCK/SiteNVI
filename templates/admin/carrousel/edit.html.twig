@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ajouter au carrousel{% endblock %}
+{% block title %}Modifier le carrousel{% endblock %}
 
 {% block body %}
     <section class="container py-5">
@@ -8,7 +8,7 @@
             <div class="col-12 col-md-8 col-lg-6">
 
                 <h1 class="mb-4 text-center">
-                    Ajouter au carrousel
+                    Modifier un élément du carrousel
                 </h1>
 
                 {% for message in app.flashes('success') %}
@@ -31,7 +31,7 @@
                             {{ form_errors(form.ordreCarrousel) }}
                         </div>
                     </div>
-
+                    
                     <div class="mb-3">
                         {{ form_row(form.actif) }}
                     </div>
@@ -45,10 +45,16 @@
                     </div>
 
                     <button type="submit" class="btn btn-warning w-100">
-                        Ajouter au carrousel
+                        Enregistrer les modifications
                     </button>
 
                 {{ form_end(form) }}
+
+                <div class="text-center mt-3">
+                    <a href="{{ path('app_admin_carrousel_index') }}">
+                        Retour à la liste
+                    </a>
+                </div>
 
             </div>
         </div>

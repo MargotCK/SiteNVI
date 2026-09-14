@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion du carrousel{% endblock %}
+
+{% block body %}
+    <section class="container py-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1>Gestion du carrousel</h1>
+
+            <a href="{{ path('app_admin_carrousel_new') }}" class="btn btn-warning">
+                Ajouter un élément
+            </a>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-bordered align-middle">
+                <thead>
+                    <tr>
+                        <th>Ordre</th>
+                        <th>Image</th>
+                        <th>Actif</th>
+                        <th>Offre associée</th>
+                        <th>Contenu éditorial</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for carrousel in carrousels %}
+                        <tr>
+                            <td>{{ carrousel.ordreCarrousel }}</td>
+
+                            <td>
+                                <img
+                                    src="{{ carrousel.image.chemin }}"
+                                    alt="{{ carrousel.image.texteAlternatif ?? 'Image du carrousel' }}"
+                                    style="width: 100px; height: 70px; object-fit: contain;"
+                                >
+                            </td>
+
+                            <td>
+                                {% if carrousel.actif %}
+                                    <span class="badge bg-success">Actif</span>
+                                {% else %}
+                                    <span class="badge bg-secondary">Inactif</span>
+                                {% endif %}
+                            </td>
+
+                            <td>
+                                {{ carrousel.offre ? carrousel.offre.titre : 'Aucune' }}
+                            </td>
+
+                            <td>
+                                {{ carrousel.contenuEditorial ? carrousel.contenuEditorial.titre : 'Aucun' }}
+                            </td>
+
+                            <td>
+                                <a 
+                                    href="{{ path('app_admin_carrousel_edit', {'id': carrousel.id}) }}"
+                                    class="btn btn-sm btn-outline-primary"
+                                > 
+                                    Modifier
+                                </a>
+                                <form
+                                    method="post"
+                                    action="{{ path('app_admin_carrousel_delete', {'id': carrousel.id}) }}"
+                                    class="d-inline"
+                                    onsubmit="return confirm('Voulez-vous vraiment supprimer cet élément du carrousel ?');"
+                                >
+                                    <input
+                                        type="hidden"
+                                        name="_token"
+                                        value="{{ csrf_token('delete' ~ carrousel.id) }}"
+                                    >
+
+                                    <button
+                                        type="submit"
+                                        class="btn btn-sm btn-outline-danger"
+                                    >
+                                        Supprimer
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="6" class="text-center">
+                                Aucun élément dans le carrousel.
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+{% endblock %}

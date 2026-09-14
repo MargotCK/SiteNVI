@@ -4,8 +4,14 @@ namespace App\Entity;
 
 use App\Repository\CarrouselRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CarrouselRepository::class)]
+#[UniqueEntity(
+    fields: ['ordreCarrousel'],
+    message: '/!\ Cet ordre est déjà utilisé dans le carrousel.'
+)]
 class Carrousel
 {
     #[ORM\Id]
@@ -14,6 +20,9 @@ class Carrousel
     private ?int $id = null;
 
     #[ORM\Column(nullable: true,unique: true)]
+    #[Assert\Positive(
+    message: '/!\ L’ordre doit être un nombre supérieur à 0.'
+    )]
     private ?int $ordreCarrousel = null;
 
     #[ORM\Column(options: ['default' => true])]
