@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\CategorieContenu;
+
 use App\Entity\ContenuEditorial;
 use App\Entity\Image;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -18,22 +18,17 @@ class ContenuEditorialType extends AbstractType
             ->add('titre', null, [
                 'label' => 'Titre',
             ])
-            ->add('resume', null, [
-                'label' => 'Résumé',
-                'required' => false,
-            ])
+            
             ->add('contenu', null, [
                 'label' => 'Contenu',
             ])
             ->add('meta_description', null, [
                 'label' => 'Meta description',
                 'required' => false,
-            ])
-            ->add('categorieContenu', EntityType::class, [
-                'class' => CategorieContenu::class,
-                'choice_label' => 'nom',
-                'label' => 'Catégorie',
-                'placeholder' => 'Choisir une catégorie',
+                'help' => 'Laissez vide pour une génération automatique. Vous pourrez la modifier ensuite.',
+                'attr' => [
+                    'maxlength' => 160,
+                ],
             ])
             ->add('image', EntityType::class, [
                 'class' => Image::class,
@@ -47,5 +42,12 @@ class ContenuEditorialType extends AbstractType
                 'required' => false,
             ])
         ;
+    }
+    
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefaults([
+            'data_class' => ContenuEditorial::class,
+        ]);
     }
 }

@@ -7,8 +7,13 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: ContenuEditorialRepository::class)]
+#[UniqueEntity(
+    fields: ['titre'],
+    message: '/!\ Ce titre est déjà utilisé.'
+)]
 class ContenuEditorial
 {
     #[ORM\Id]

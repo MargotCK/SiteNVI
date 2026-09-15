@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un contenu éditorial{% endblock %}
+
+{% block body %}
+    <section class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6">
+
+                <h1 class="mb-4 text-center">
+                    Modifier un contenu éditorial
+                </h1>
+
+                {{ form_start(form) }}
+
+                    <div class="mb-3">
+                        {{ form_row(form.titre) }}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form_row(form.contenu) }}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form_row(form.meta_description) }}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form_row(form.image) }}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form_row(form.actif) }}
+                    </div>
+
+                    <button type="submit" class="btn btn-warning w-100">
+                        Enregistrer les modifications
+                    </button>
+
+                {{ form_end(form) }}
+
+                <div class="text-center mt-3">
+                    <a href="{{ path('app_admin_contenu_editorial_index') }}">
+                        Retour à la liste
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+{% endblock %}
