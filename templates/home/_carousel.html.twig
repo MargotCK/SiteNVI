@@ -19,15 +19,30 @@
             {% for carrousel in carrousels %}
                 <div class="carousel-item {{ loop.first ? 'active' : '' }}">
 
-                    <img
-                        src="{{ carrousel.image.chemin }}"
-                        class="d-block w-100 home-carousel-image"
-                        alt="{{ carrousel.image.texteAlternatif ?? 'Image du carrousel' }}"
-                    >
+                    {% if not carrousel.offre and not carrousel.contenuEditorial %}
+                        <button
+                            type="button"
+                            class="border-0 p-0 bg-transparent w-100"
+                            data-bs-toggle="modal"
+                            data-bs-target="#bdModal{{ carrousel.id }}"
+                            aria-label="Agrandir {{ carrousel.image.texteAlternatif ?? 'la BD' }}"
+                        >
+                            <img
+                                src="{{ carrousel.image.chemin }}"
+                                class="d-block w-100 home-carousel-image"
+                                alt="{{ carrousel.image.texteAlternatif ?? 'BD' }}"
+                            >
+                        </button>
+                    {% else %}
+                        <img
+                            src="{{ carrousel.image.chemin }}"
+                            class="d-block w-100 home-carousel-image"
+                            alt="{{ carrousel.image.texteAlternatif ?? 'Image du carrousel' }}"
+                        >
+                    {% endif %}
 
                     {% if carrousel.offre %}
                         <div class="carousel-caption">
-                            
                             <a
                                 href="{{ path('app_offre_show', {
                                     'slug': carrousel.offre.slug
@@ -40,7 +55,9 @@
 
                     {% elseif carrousel.contenuEditorial %}
                         <div class="carousel-caption">
-                            <h2>{{ carrousel.contenuEditorial.titre }}</h2>
+                            <h2>
+                                {{ carrousel.contenuEditorial.titre }}
+                            </h2>
                         </div>
                     {% endif %}
 
@@ -55,8 +72,13 @@
             data-bs-target="#homeCarousel"
             data-bs-slide="prev"
         >
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Précédent</span>
+            <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+            ></span>
+            <span class="visually-hidden">
+                Précédent
+            </span>
         </button>
 
         <button
@@ -65,13 +87,133 @@
             data-bs-target="#homeCarousel"
             data-bs-slide="next"
         >
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Suivant</span>
+            <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+            ></span>
+            <span class="visually-hidden">
+                Suivant
+            </span>
         </button>
 
     </div>
+
+    {% for carrousel in carrousels %}
+        {% if not carrousel.offre and not carrousel.contenuEditorial %}
+            <div
+                class="modal fade"
+                id="bdModal{{ carrousel.id }}"
+                tabindex="-1"
+                aria-hidden="true"
+            >
+                <div
+                    class="modal-dialog modal-xl modal-dialog-centered"
+                >
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h2 class="modal-title fs-5">
+                                {{ carrousel.image.texteAlternatif ?? 'BD' }}
+                            </h2>
+
+                            <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Fermer"
+                            ></button>
+                        </div>
+
+                        <div class="modal-body">
+                            <div class="text-center mb-3">
+                                <button
+                                    type="button"
+                                    class="btn btn-outline-secondary btn-sm bd-zoom-out"
+                                >
+                                    − Dézoomer
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="btn btn-outline-secondary btn-sm bd-zoom-reset"
+                                >
+                                    Réinitialiser
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="btn btn-outline-secondary btn-sm bd-zoom-in"
+                                >
+                                    + Zoomer
+                                </button>
+                            </div>
+
+                            <div
+                                class="text-center overflow-auto"
+                                style="max-height: 75vh;"
+                            >
+                                <img
+                                    src="{{ carrousel.image.chemin }}"
+                                    class="img-fluid bd-modal-image"
+                                    alt="{{ carrousel.image.texteAlternatif ?? 'BD' }}"
+                                    style="transition: transform 0.2s ease; transform-origin: top center;"
+                                >
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+
 {% else %}
     <div class="alert alert-info text-center">
         Aucun contenu n’est actuellement disponible dans le carrousel.
     </div>
 {% endif %}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.modal').forEach(function (modal) {
+            const image = modal.querySelector('.bd-modal-image');
+            const zoomIn = modal.querySelector('.bd-zoom-in');
+            const zoomOut = modal.querySelector('.bd-zoom-out');
+            const zoomReset = modal.querySelector('.bd-zoom-reset');
+
+            if (!image || !zoomIn || !zoomOut || !zoomReset) {
+                return;
+            }
+
+            let zoom = 1;
+
+            function appliquerZoom() {
+                image.style.transform = `scale(${zoom})`;
+            }
+
+            zoomIn.addEventListener('click', function () {
+                if (zoom < 3) {
+                    zoom += 0.25;
+                    appliquerZoom();
+                }
+            });
+
+            zoomOut.addEventListener('click', function () {
+                if (zoom > 0.5) {
+                    zoom -= 0.25;
+                    appliquerZoom();
+                }
+            });
+
+            zoomReset.addEventListener('click', function () {
+                zoom = 1;
+                appliquerZoom();
+            });
+
+            modal.addEventListener('hidden.bs.modal', function () {
+                zoom = 1;
+                appliquerZoom();
+            });
+        });
+    });
+</script>
