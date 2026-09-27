@@ -6,6 +6,7 @@ use App\Repository\CarrouselRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 #[ORM\Entity(repositoryClass: CarrouselRepository::class)]
 #[UniqueEntity(
@@ -101,5 +102,17 @@ class Carrousel
         $this->contenuEditorial = $contenuEditorial;
 
         return $this;
+    }
+    
+    #[Assert\Callback]
+    public function validateLienUnique(ExecutionContextInterface $context): void
+    {
+        if ($this->offre !== null && $this->contenuEditorial !== null) {
+            $context->buildViolation(
+                '/!\ Une slide ne peut pas être liée à la fois à une offre et à un contenu éditorial.'
+            )
+                ->atPath('contenuEditorial')
+                ->addViolation();
+        }
     }
 }

@@ -41,7 +41,12 @@
                     </div>
 
                     <div class="mb-3">
-                        {{ form_row(form.contenuEditorial) }}
+                        {{ form_label(form.contenuEditorial) }}
+                        {{ form_widget(form.contenuEditorial) }}
+
+                        <div class="text-danger fw-bold">
+                            {{ form_errors(form.contenuEditorial) }}
+                        </div>
                     </div>
 
                     <button type="submit" class="btn btn-warning w-100">
