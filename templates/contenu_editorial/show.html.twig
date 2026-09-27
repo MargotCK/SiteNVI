@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ contenuEditorial.titre }} - Nous Vous Îles
+{% endblock %}
+
+{% block meta_description %}
+    {{ contenuEditorial.metaDescription ?? contenuEditorial.resume ?? contenuEditorial.titre }}
+{% endblock %}
+
+{% block body %}
+    <main class="container my-5">
+
+        <article>
+            <h1 class="mb-4">
+                {{ contenuEditorial.titre }}
+            </h1>
+
+            {% if contenuEditorial.image %}
+                <img
+                    src="{{ contenuEditorial.image.chemin }}"
+                    class="img-fluid rounded mb-4"
+                    alt="{{ contenuEditorial.image.texteAlternatif ?? contenuEditorial.titre }}"
+                >
+            {% endif %}
+
+            {% if contenuEditorial.resume %}
+                <p class="lead">
+                    {{ contenuEditorial.resume }}
+                </p>
+            {% endif %}
+
+            <div class="mt-4">
+                {{ contenuEditorial.contenu|raw }}
+            </div>
+        </article>
+
+    </main>
+{% endblock %}

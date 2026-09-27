@@ -58,6 +58,15 @@
                             <h2>
                                 {{ carrousel.contenuEditorial.titre }}
                             </h2>
+
+                            <a
+                                href="{{ path('app_contenu_editorial_show', {
+                                    'slug': carrousel.contenuEditorial.slug
+                                }) }}"
+                                class="btn btn-warning"
+                            >
+                                Lire l’article
+                            </a>
                         </div>
                     {% endif %}
 
