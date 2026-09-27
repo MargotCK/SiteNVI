@@ -1,0 +1,157 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Connexion administrateur
+{% endblock %}
+
+{% block body %}
+    <main class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-5">
+
+                <h1 class="mb-4 text-center">
+                    Connexion administrateur
+                </h1>
+
+                {% if error %}
+                    <div class="alert alert-danger fw-bold">
+                        Identifiants incorrects. Veuillez vérifier votre email et votre mot de passe.
+                    </div>
+                {% endif %}
+
+                {% if app.user %}
+                    <div class="alert alert-info">
+                        Vous êtes déjà connecté avec le compte
+                        <strong>{{ app.user.userIdentifier }}</strong>.
+
+                        <a href="{{ path('app_logout') }}">
+                            Se déconnecter
+                        </a>
+                    </div>
+                {% endif %}
+
+                <form method="post" id="admin-login-form">
+
+                    <div class="mb-3">
+                        <label for="username" class="form-label">
+                            Email
+                        </label>
+
+                        <div class="input-group">
+                            <input
+                                type="email"
+                                value="{{ last_username }}"
+                                name="_username"
+                                id="username"
+                                class="form-control"
+                                autocomplete="email"
+                                required
+                                autofocus
+                            >
+
+                            <button
+                                type="button"
+                                class="btn btn-outline-secondary"
+                                id="clear-email"
+                                aria-label="Effacer l'email"
+                            >
+                                Effacer
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password" class="form-label">
+                            Mot de passe
+                        </label>
+
+                        <div class="input-group">
+                            <input
+                                type="password"
+                                name="_password"
+                                id="password"
+                                class="form-control"
+                                autocomplete="current-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="btn btn-outline-secondary"
+                                id="toggle-password"
+                                aria-label="Afficher ou masquer le mot de passe"
+                            >
+                                Afficher
+                            </button>
+
+                            <button
+                                type="button"
+                                class="btn btn-outline-secondary"
+                                id="clear-password"
+                                aria-label="Effacer le mot de passe"
+                            >
+                                Effacer
+                            </button>
+                        </div>
+                    </div>
+
+                    <input
+                        type="hidden"
+                        name="_csrf_token"
+                        data-controller="csrf-protection"
+                        value="{{ csrf_token('authenticate') }}"
+                    >
+
+                    <div class="d-grid gap-2">
+                        <button
+                            class="btn btn-warning btn-lg"
+                            type="submit"
+                        >
+                            Se connecter
+                        </button>
+                        <a
+                            href="#"
+                            class="btn btn-outline-secondary"
+                        >
+                            Mot de passe oublié ?
+                        </a>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const emailInput = document.getElementById('username');
+            const passwordInput = document.getElementById('password');
+            const clearEmailButton = document.getElementById('clear-email');
+            const clearPasswordButton = document.getElementById('clear-password');
+            const togglePasswordButton = document.getElementById('toggle-password');
+
+            clearEmailButton.addEventListener('click', function () {
+                emailInput.value = '';
+                emailInput.focus();
+            });
+
+            clearPasswordButton.addEventListener('click', function () {
+                passwordInput.value = '';
+                passwordInput.focus();
+            });
+
+            togglePasswordButton.addEventListener('click', function () {
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    togglePasswordButton.textContent = 'Masquer';
+                } else {
+                    passwordInput.type = 'password';
+                    togglePasswordButton.textContent = 'Afficher';
+                }
+
+                passwordInput.focus();
+            });
+        });
+    </script>
+{% endblock %}

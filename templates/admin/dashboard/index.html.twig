@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tableau de bord admin{% endblock %}
+
+{% block body %}
+    <main class="container py-5">
+        <h1 class="mb-4 text-center">
+            Tableau de bord administrateur
+        </h1>
+
+        <p class="text-center mb-5">
+            Bienvenue dans l’espace d’administration de Nous Vous Îles.
+        </p>
+
+        <div class="row g-4 justify-content-center">
+
+            <div class="col-12 col-md-4">
+                <a
+                    href="{{ path('app_admin_carrousel_index') }}"
+                    class="btn btn-warning w-100 py-3"
+                >
+                    Gérer le carrousel
+                </a>
+            </div>
+
+            <div class="col-12 col-md-4">
+                <a
+                    href="{{ path('app_admin_contenu_editorial_index') }}"
+                    class="btn btn-warning w-100 py-3"
+                >
+                    Gérer les contenus éditoriaux
+                </a>
+            </div>
+
+            <div class="col-12 col-md-4">
+                <a
+                    href="{{ path('app_admin_image_new') }}"
+                    class="btn btn-warning w-100 py-3"
+                >
+                    Ajouter une image
+                </a>
+            </div>
+
+        </div>
+    </main>
+{% endblock %}
