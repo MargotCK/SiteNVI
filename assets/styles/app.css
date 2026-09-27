@@ -363,4 +363,69 @@ Apparence des liens principaux :
         border-radius: 10px;
     }
 }
+/* ============================= */
+/* Page publique contenu éditorial */
+/* ============================= */
 
+/* Conteneur général de la page.
+   Les marges gauche/droite sont d’environ 2 cm sur ordinateur. */
+.contenu-editorial-page {
+    padding: 3rem 2cm;
+}
+
+/* Bloc principal de l’article.
+   La largeur maximale évite que les lignes soient trop longues à lire. */
+.contenu-editorial-article {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Titre principal de l’article. */
+.contenu-editorial-title {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Bloc qui contient l’image principale. */
+.contenu-editorial-image-wrapper {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Image principale du contenu éditorial.
+   Elle reste responsive et ne dépasse pas la largeur disponible. */
+.contenu-editorial-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 1rem;
+}
+
+/* Résumé ou introduction du contenu.
+   Il est centré pour se distinguer du texte principal. */
+.contenu-editorial-resume {
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Corps du texte principal.
+   Le texte est justifié sur ordinateur pour un rendu plus éditorial. */
+.contenu-editorial-content {
+    text-align: justify;
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+/* Adaptation responsive pour tablette et mobile.
+    Les marges passent à environ 1 cm.
+   Le texte repasse aligné à gauche pour éviter les grands espaces irréguliers. */
+@media (max-width: 768px) {
+    .contenu-editorial-page {
+        padding: 2rem 1cm;
+    }
+
+    .contenu-editorial-content {
+        text-align: left;
+    }
+}

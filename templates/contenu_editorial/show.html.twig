@@ -9,31 +9,33 @@
 {% endblock %}
 
 {% block body %}
-    <main class="container my-5">
+    <main class="contenu-editorial-page">
+        <article class="contenu-editorial-article">
 
-        <article>
-            <h1 class="mb-4">
+            <h1 class="contenu-editorial-title">
                 {{ contenuEditorial.titre }}
             </h1>
 
             {% if contenuEditorial.image %}
-                <img
-                    src="{{ contenuEditorial.image.chemin }}"
-                    class="img-fluid rounded mb-4"
-                    alt="{{ contenuEditorial.image.texteAlternatif ?? contenuEditorial.titre }}"
-                >
+                <div class="contenu-editorial-image-wrapper">
+                    <img
+                        src="{{ contenuEditorial.image.chemin }}"
+                        class="contenu-editorial-image"
+                        alt="{{ contenuEditorial.image.texteAlternatif ?? contenuEditorial.titre }}"
+                    >
+                </div>
             {% endif %}
 
             {% if contenuEditorial.resume %}
-                <p class="lead">
+                <p class="contenu-editorial-resume">
                     {{ contenuEditorial.resume }}
                 </p>
             {% endif %}
 
-            <div class="mt-4">
+            <div class="contenu-editorial-content">
                 {{ contenuEditorial.contenu|raw }}
             </div>
-        </article>
 
+        </article>
     </main>
 {% endblock %}
