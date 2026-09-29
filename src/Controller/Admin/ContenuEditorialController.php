@@ -4,10 +4,10 @@ namespace App\Controller\Admin;
 
 use App\Entity\ContenuEditorial;
 use App\Form\ContenuEditorialType;
-use App\Repository\CategorieContenuRepository;
 use App\Repository\ContenuEditorialRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -35,21 +35,9 @@ final class ContenuEditorialController extends AbstractController
         Request $request,
         EntityManagerInterface $entityManager,
         SluggerInterface $slugger,
-        CategorieContenuRepository $categorieContenuRepository
+        ContenuEditorialRepository $contenuEditorialRepository
     ): Response {
         $contenu = new ContenuEditorial();
-
-        $categorie = $categorieContenuRepository->findOneBy([
-            'slug' => 'actualite',
-        ]);
-
-        if (!$categorie) {
-            throw $this->createNotFoundException(
-                'La catégorie Actualité est introuvable.'
-            );
-        }
-
-        $contenu->setCategorieContenu($categorie);
 
         $form = $this->createForm(
             ContenuEditorialType::class,
@@ -59,6 +47,30 @@ final class ContenuEditorialController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $categorie = $contenu->getCategorieContenu();
+
+            if ($categorie->getSlug() !== 'actualite') {
+            
+                $contenuExistant = $contenuEditorialRepository->findOneBy([
+                    'categorieContenu' => $categorie->getId(),
+                ]);
+                
+            if ($contenuExistant) {
+
+                $form->addError(
+                    new FormError(
+                        'Un contenu existe déjà pour cette catégorie. Modifiez-le ou supprimez-le avant d’en créer un nouveau.'
+                    )
+                );
+
+                return $this->render(
+                    'admin/contenu_editorial/new.html.twig',
+                    [
+                        'form' => $form,
+                    ]
+                );
+            }
+        }    
             $contenu->setSlug(
                 $slugger
                     ->slug($contenu->getTitre())
@@ -111,7 +123,7 @@ final class ContenuEditorialController extends AbstractController
             ]
         );
     }
-    
+
     #[Route('/{id}/edit', name: 'app_admin_contenu_editorial_edit')]
     public function edit(
         ContenuEditorial $contenu,
@@ -170,7 +182,7 @@ final class ContenuEditorialController extends AbstractController
         EntityManagerInterface $entityManager
     ): Response {
         if ($this->isCsrfTokenValid(
-            'delete'.$contenu->getId(),
+            'delete' . $contenu->getId(),
             $request->request->get('_token')
         )) {
             $entityManager->remove($contenu);

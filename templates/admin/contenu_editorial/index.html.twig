@@ -9,6 +9,12 @@
                 {{ message }}
             </div>
         {% endfor %}
+
+        {% for message in app.flashes('danger') %}
+            <div class="alert alert-danger fw-bold">
+                {{ message }}
+            </div>
+        {% endfor %}
         
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h1>Gestion des contenus éditoriaux</h1>

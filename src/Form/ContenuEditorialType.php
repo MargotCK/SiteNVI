@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-
+use App\Entity\CategorieContenu;
 use App\Entity\ContenuEditorial;
 use App\Entity\Image;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -19,6 +19,14 @@ class ContenuEditorialType extends AbstractType
                 'label' => 'Titre',
             ])
             
+            ->add('categorieContenu', EntityType::class, [
+                'class' => CategorieContenu::class,
+                'choice_label' => 'nom',
+                'label' => 'Catégorie',
+                'placeholder' => 'Choisir une catégorie',
+                'required' => true,
+            ])
+
             ->add('contenu', null, [
                 'label' => 'Contenu',
             ])
