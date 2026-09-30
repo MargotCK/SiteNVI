@@ -25,7 +25,9 @@
 
             {{ form_start(form) }}
             
-            {{ form_errors(form) }}
+                <div class="text-danger fw-bold mb-3">
+                    {{ form_errors(form) }}
+                </div>
 
                 <div class="mb-3">
                     {{ form_row(form.categorieContenu) }}

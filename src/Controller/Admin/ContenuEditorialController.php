@@ -52,7 +52,7 @@ final class ContenuEditorialController extends AbstractController
             if ($categorie->getSlug() !== 'actualite') {
             
                 $contenuExistant = $contenuEditorialRepository->findOneBy([
-                    'categorieContenu' => $categorie->getId(),
+                    'categorieContenu' => $categorie,
                 ]);
                 
             if ($contenuExistant) {
