@@ -1,20 +1,56 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello QuiSommesNousController!{% endblock %}
+{% block title %}Qui sommes-nous ?{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<section class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-9">
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+            <h1 class="mb-4 text-center">Qui sommes-nous ?</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/nadia/Desktop/SiteNVI/src/Controller/QuiSommesNousController.php</code></li>
-        <li>Your template at <code>C:/Users/nadia/Desktop/SiteNVI/templates/qui_sommes_nous/index.html.twig</code></li>
-    </ul>
-</div>
+            <p class="lead text-center mb-5">
+                Nous Vous Îles est un espace culturel dédié à la valorisation
+                des cultures, des mémoires et des talents d’Outre-mer.
+            </p>
+
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-4 p-md-5">
+
+                    <h2 class="h4 mb-3">Notre mission</h2>
+
+                    <p>
+                        L’association a pour objectif de créer un lieu de rencontre,
+                        de transmission et de découverte autour des cultures ultramarines.
+                    </p>
+
+                    <p>
+                        À travers des ateliers, des événements, des rencontres,
+                        des contenus éducatifs et des temps de convivialité,
+                        Nous Vous Îles souhaite faire connaître la richesse
+                        des patrimoines d’Outre-mer.
+                    </p>
+
+                    <h2 class="h4 mt-5 mb-3">Un espace de transmission</h2>
+
+                    <p>
+                        Le projet met en avant les histoires, les savoir-faire,
+                        les langues, les traditions, les artistes et les initiatives
+                        qui participent au rayonnement culturel ultramarin.
+                    </p>
+
+                    <h2 class="h4 mt-5 mb-3">Un lieu ouvert à toutes et tous</h2>
+
+                    <p>
+                        Nous Vous Îles s’adresse à celles et ceux qui souhaitent
+                        découvrir, partager, apprendre ou renouer avec les cultures
+                        d’Outre-mer dans un cadre chaleureux et accessible.
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
 {% endblock %}
