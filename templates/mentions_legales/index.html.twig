@@ -1,20 +1,92 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MentionsLegalesController!{% endblock %}
+{% block title %}Mentions légales{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<section class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-9">
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+            <h1 class="mb-4 text-center">Mentions légales</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/nadia/Desktop/SiteNVI/src/Controller/MentionsLegalesController.php</code></li>
-        <li>Your template at <code>C:/Users/nadia/Desktop/SiteNVI/templates/mentions_legales/index.html.twig</code></li>
-    </ul>
-</div>
+            <p class="lead text-center mb-5">
+                Informations relatives à l’édition, l’hébergement et l’utilisation
+                du site Nous Vous Îles.
+            </p>
+
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-4 p-md-5">
+
+                    <h2 class="h4 mb-3">Éditeur du site</h2>
+
+                    <p>
+                        Le présent site est édité par l’association
+                        <strong>Nous Vous Îles</strong>.
+                    </p>
+
+                    <p>
+                        Adresse : à compléter<br>
+                        Email : à compléter<br>
+                        Responsable de publication : à compléter
+                    </p>
+
+                    <h2 class="h4 mt-5 mb-3">Hébergement</h2>
+
+                    <p>
+                        Le site est hébergé par :
+                    </p>
+
+                    <p>
+                        Hébergeur : à compléter<br>
+                        Adresse de l’hébergeur : à compléter<br>
+                        Site internet de l’hébergeur : à compléter
+                    </p>
+
+                    <h2 class="h4 mt-5 mb-3">Propriété intellectuelle</h2>
+
+                    <p>
+                        L’ensemble des contenus présents sur ce site, notamment les textes,
+                        images, illustrations, logos et éléments graphiques, sont protégés
+                        par le droit de la propriété intellectuelle.
+                    </p>
+
+                    <p>
+                        Toute reproduction, représentation, modification ou diffusion,
+                        totale ou partielle, sans autorisation préalable, est interdite.
+                    </p>
+
+                    <h2 class="h4 mt-5 mb-3">Données personnelles</h2>
+
+                    <p>
+                        Les données éventuellement collectées via le site sont destinées
+                        uniquement à l’usage de l’association Nous Vous Îles, dans le cadre
+                        de ses activités et de sa communication.
+                    </p>
+
+                    <p>
+                        Conformément à la réglementation applicable, vous pouvez demander
+                        l’accès, la rectification ou la suppression de vos données personnelles
+                        en contactant l’association.
+                    </p>
+
+                    <h2 class="h4 mt-5 mb-3">Liens externes</h2>
+
+                    <p>
+                        Le site peut contenir des liens vers des services externes,
+                        notamment les réseaux sociaux ou la plateforme HelloAsso.
+                        Nous Vous Îles n’est pas responsable du contenu ou du fonctionnement
+                        de ces sites tiers.
+                    </p>
+
+                    <div class="alert alert-warning mt-5 mb-0">
+                        Ces mentions légales sont une version provisoire. Les informations
+                        officielles devront être complétées et validées par l’association.
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
 {% endblock %}

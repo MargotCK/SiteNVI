@@ -1,20 +1,158 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello FaqController!{% endblock %}
+{% block title %}FAQ{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<section class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-9">
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+            <h1 class="mb-4 text-center">FAQ</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/nadia/Desktop/SiteNVI/src/Controller/FaqController.php</code></li>
-        <li>Your template at <code>C:/Users/nadia/Desktop/SiteNVI/templates/faq/index.html.twig</code></li>
-    </ul>
-</div>
+            <p class="lead text-center mb-5">
+                Retrouvez ici les réponses aux questions les plus fréquentes
+                sur Nous Vous Îles, ses activités et son fonctionnement.
+            </p>
+
+            <div class="accordion" id="faqAccordion">
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="questionAdhesion">
+                        <button
+                            class="accordion-button"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#reponseAdhesion"
+                            aria-expanded="true"
+                            aria-controls="reponseAdhesion"
+                        >
+                            Comment adhérer à l’association ?
+                        </button>
+                    </h2>
+                    <div
+                        id="reponseAdhesion"
+                        class="accordion-collapse collapse show"
+                        aria-labelledby="questionAdhesion"
+                        data-bs-parent="#faqAccordion"
+                    >
+                        <div class="accordion-body">
+                            Vous pouvez adhérer en ligne depuis la page Adhésion,
+                            grâce au lien sécurisé vers HelloAsso.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="questionActivites">
+                        <button
+                            class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#reponseActivites"
+                            aria-expanded="false"
+                            aria-controls="reponseActivites"
+                        >
+                            Quelles activités propose Nous Vous Îles ?
+                        </button>
+                    </h2>
+                    <div
+                        id="reponseActivites"
+                        class="accordion-collapse collapse"
+                        aria-labelledby="questionActivites"
+                        data-bs-parent="#faqAccordion"
+                    >
+                        <div class="accordion-body">
+                            L’association propose des ateliers, des rencontres,
+                            des événements culturels, des contenus éducatifs
+                            et des temps de convivialité autour des cultures
+                            ultramarines.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="questionPublic">
+                        <button
+                            class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#reponsePublic"
+                            aria-expanded="false"
+                            aria-controls="reponsePublic"
+                        >
+                            Les activités sont-elles ouvertes à tout le monde ?
+                        </button>
+                    </h2>
+                    <div
+                        id="reponsePublic"
+                        class="accordion-collapse collapse"
+                        aria-labelledby="questionPublic"
+                        data-bs-parent="#faqAccordion"
+                    >
+                        <div class="accordion-body">
+                            Oui. Nous Vous Îles s’adresse aussi bien aux personnes
+                            originaires des Outre-mer qu’à toutes celles qui souhaitent
+                            découvrir, apprendre et partager autour de ces cultures.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="questionLieu">
+                        <button
+                            class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#reponseLieu"
+                            aria-expanded="false"
+                            aria-controls="reponseLieu"
+                        >
+                            Où se déroulent les activités ?
+                        </button>
+                    </h2>
+                    <div
+                        id="reponseLieu"
+                        class="accordion-collapse collapse"
+                        aria-labelledby="questionLieu"
+                        data-bs-parent="#faqAccordion"
+                    >
+                        <div class="accordion-body">
+                            Les activités ont vocation à se dérouler principalement
+                            à Choisy-le-Roi et dans les lieux partenaires de l’association.
+                            Les informations pratiques sont précisées lors de chaque événement.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="questionContact">
+                        <button
+                            class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#reponseContact"
+                            aria-expanded="false"
+                            aria-controls="reponseContact"
+                        >
+                            Comment contacter l’association ?
+                        </button>
+                    </h2>
+                    <div
+                        id="reponseContact"
+                        class="accordion-collapse collapse"
+                        aria-labelledby="questionContact"
+                        data-bs-parent="#faqAccordion"
+                    >
+                        <div class="accordion-body">
+                            Vous pouvez contacter l’association via ses réseaux sociaux
+                            ou par les coordonnées indiquées dans les mentions légales.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
 {% endblock %}

@@ -11,8 +11,6 @@ final class AdhesionController extends AbstractController
     #[Route('/adhesion', name: 'app_adhesion')]
     public function index(): Response
     {
-        return $this->render('adhesion/index.html.twig', [
-            'controller_name' => 'AdhesionController',
-        ]);
+        return $this->render('adhesion/index.html.twig');
     }
 }

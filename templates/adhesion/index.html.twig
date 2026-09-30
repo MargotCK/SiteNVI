@@ -1,20 +1,51 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AdhesionController!{% endblock %}
+{% block title %}Adhésion{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<section class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+            <h1 class="mb-4 text-center">Adhérer à Nous Vous Iles</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/nadia/Desktop/SiteNVI/src/Controller/AdhesionController.php</code></li>
-        <li>Your template at <code>C:/Users/nadia/Desktop/SiteNVI/templates/adhesion/index.html.twig</code></li>
-    </ul>
-</div>
+            <p class="lead text-center mb-5">
+                Adhérer, ce n’est pas simplement prendre une carte : 
+                c’est rejoindre une communauté qui fait vivre l’Outre-mer en métropole.
+            </p>
+
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-4 p-md-5 text-center">
+
+                    <h2 class="h4 mb-3">Pourquoi adhérer ?</h2>
+
+                    <p>
+                        Votre adhésion aide directement à faire vivre la bibliothèque et la librairie dédiées aux livres, contes, 
+                        histoires et langues des Outre-mer.
+                    </p>
+
+                    <p>
+                        Elle permet également d'organiser des cours de créole, des ateliers autour des savoir-faire, de la cuisine et 
+                        de la transmission. De plus elle donne de la visibilité aux créateurs et porteurs de projets de tout âge.
+                    </p>
+
+                    <a
+                        href="https://www.helloasso.com/associations/outremer-racines/adhesions/adhesion-or-saison-mai-2026-aout-2027-12e-annee-entrprendre"
+                        class="btn btn-warning btn-lg mt-3"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Adhérer via HelloAsso
+                    </a>
+
+                    <p class="small text-muted mt-3 mb-0">
+                        Le paiement est sécurisé via la plateforme HelloAsso.
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
 {% endblock %}
