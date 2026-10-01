@@ -27,14 +27,14 @@
                         {% if contenuEditorial.image %}
                             <div class="text-center mb-4">
                                 <img
-                                    src="{{ contenuEditorial.image.url }}"
-                                    alt="{{ contenuEditorial.image.alt }}"
-                                    class="img-fluid rounded"
-                                >
+                                    src="{{ contenuEditorial.image.chemin }}"
+                                    alt="{{ contenuEditorial.image.texteAlternatif ?: contenuEditorial.titre }}"
+                                    class="img-fluid rounded shadow-sm editorial-image"
+                                >   
                             </div>
                         {% endif %}
 
-                        <div class="fs-5">
+                        <div class="fs-5 editorial-content">
                             {{ contenuEditorial.contenu|raw }}
                         </div>
 

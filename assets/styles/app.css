@@ -429,3 +429,24 @@ Apparence des liens principaux :
         text-align: left;
     }
 }
+/* 
+ * Contenus éditoriaux
+ * Image responsive utilisée sur les pages de contenu :
+ * - Manifestations
+ * - Dates mémorables
+ * - Personnalités inspirantes
+ * - Ressources éducatives
+ * - Articles éditoriaux
+ */
+.editorial-image {
+    width: 100%;
+    max-height: 520px;
+    object-fit: contain;
+}
+
+/*
+ * Améliore la lisibilité des textes éditoriaux.
+ */
+.editorial-content {
+    line-height: 1.8;
+}
