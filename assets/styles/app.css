@@ -1,4 +1,64 @@
 /* ==================================================
+    STRUCTURE GÉNÉRALE DU SITE
+   ================================================== */
+
+/*
+    Donne une hauteur minimale à la page complète.
+    Cela permet au navigateur de considérer que le site
+    occupe au moins toute la hauteur de l’écran.
+*/
+html,
+body {
+    min-height: 100%;
+}
+
+/*
+    Transforme le body en colonne verticale :
+    - header en haut
+    - navbar ensuite
+    - contenu principal au centre
+    - footer en bas
+*/
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/*
+    Le main représente le contenu principal de chaque page.
+    flex: 1 lui permet de prendre tout l’espace disponible
+    entre la navbar et le footer.
+    
+    Résultat :
+    si une page a peu de contenu, le footer reste quand même
+    collé en bas de l’écran.
+*/
+main {
+    flex: 1;
+}
+
+/*
+    Justifie les paragraphes des pages de contenu statique.
+    Utilisé notamment pour les pages :
+    - Qui sommes-nous
+    - Adhésion
+    - Mentions légales
+    - Cookies
+*/
+.text-justify p {
+    text-align: justify;
+}
+
+/*
+    Couleur orange soutenue pour les titres principaux des pages.
+    Plus lisible qu’un orange trop clair sur fond blanc.
+*/
+.page-title-orange {
+    color: #f79330;
+}
+
+/* ==================================================
     HEADER DU SITE
    ================================================== */
 
