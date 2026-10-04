@@ -504,3 +504,17 @@ Apparence des liens principaux :
 .editorial-content {
     line-height: 1.8;
 }
+
+ /*============================= */
+/* Mise en page des pages d'offres publiques. */
+/* ============================= */
+
+.offre-content {
+    max-width: 760px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+.offre-content p {
+    margin-bottom: 1.2rem;
+}
