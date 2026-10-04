@@ -1,4 +1,47 @@
 /* ==================================================
+    TEXTES GÉNÉRAUX
+   ================================================== */
+
+/*
+    Justifie les paragraphes des pages de contenu statique.
+    Utilisé notamment pour les pages :
+    - Qui sommes-nous
+    - Adhésion
+    - Mentions légales
+    - Cookies
+    - Agenda
+*/
+.text-justify p {
+    text-align: justify;
+}
+
+/*
+    Couleur orange soutenue pour les titres principaux des pages.
+    Plus lisible qu’un orange trop clair sur fond blanc.
+*/
+.page-title-orange {
+    color: #ed8620;
+}
+
+/*
+    Mise en page du contenu de l'agenda mensuel.
+    Le contenu est saisi depuis le back office dans Contenus éditoriaux.
+*/
+.agenda-content ul {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.agenda-content li {
+    margin-bottom: 0.75rem;
+}
+
+.agenda-content p {
+    margin-bottom: 1rem;
+}
+
+/* ==================================================
     HEADER DU SITE
    ================================================== */
 
