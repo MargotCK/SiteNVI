@@ -13,31 +13,17 @@
     <div class="row justify-content-center">
         <div class="col-12 col-lg-9">
 
-            <h1 class="mb-4 text-center page-title-orange">Agenda</h1>
-
-            <p class="lead text-center mb-5">
-                Retrouvez chaque mois les rendez-vous, rencontres et événements
-                proposés par Nous Vous Îles.
-            </p>
-
+            <h1 class="mb-3 text-center page-title-orange">Agenda</h1>
+            
             {% if contenuEditorial %}
 
                 <article class="card shadow-sm border-0">
                     <div class="card-body p-4 p-md-5 text-justify">
 
-                        <div class="text-center mb-5">
-                            <span class="badge bg-warning text-dark mb-3">
-                                Agenda du mois
-                            </span>
-
-                            <h2 class="h3 mb-3 page-title-orange">
+                        <div class="text-center mb-4">
+                            <h2 class="h3 mb-0 page-title-orange">
                                 {{ contenuEditorial.titre }}
                             </h2>
-
-                            <p class="text-muted mb-0">
-                                Découvrez les temps forts et les rendez-vous proposés
-                                par NVI ce mois-ci.
-                            </p>
                         </div>
 
                         {% if contenuEditorial.image %}
@@ -52,7 +38,7 @@
 
                         {% if contenuEditorial.contenu %}
                             <div class="fs-5 editorial-content agenda-content">
-                                {{ contenuEditorial.contenu|raw }}
+                                {{ contenuEditorial.contenu|nl2br }}
                             </div>
                         {% endif %}
 

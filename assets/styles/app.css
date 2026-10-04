@@ -27,18 +27,29 @@
     Mise en page du contenu de l'agenda mensuel.
     Le contenu est saisi depuis le back office dans Contenus éditoriaux.
 */
-.agenda-content ul {
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
-    padding-left: 1.5rem;
-}
-
-.agenda-content li {
-    margin-bottom: 0.75rem;
+.agenda-content {
+    max-width: 760px;
+    margin: 0 auto;
+    line-height: 1.8;
+    text-align: justify;
 }
 
 .agenda-content p {
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
+}
+
+.agenda-content ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 1.5rem 0;
+}
+
+.agenda-content li {
+    background-color: #fff4df;
+    border-left: 4px solid #f6a400;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.75rem;
 }
 
 /* ==================================================
