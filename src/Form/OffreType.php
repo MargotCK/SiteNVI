@@ -85,6 +85,28 @@ class OffreType extends AbstractType
                 'label' => 'Publier cette offre',
                 'required' => false,
             ])
+
+            ->add('helloassoLibelle', TextType::class, [
+                'label' => 'Libellé du bouton HelloAsso',
+                'mapped' => false,
+                'required' => false,
+                'data' => $options['helloasso_libelle'],
+            ])
+
+            ->add('helloassoUrl', TextType::class, [
+                'label' => 'URL HelloAsso',
+                'mapped' => false,
+                'required' => false,
+                'data' => $options['helloasso_url'],
+            ])
+
+            ->add('helloassoActif', CheckboxType::class, [
+                'label' => 'Activer le bouton HelloAsso',
+                'mapped' => false,
+                'required' => false,
+                'data' => $options['helloasso_actif'],
+            ])
+
         ;
     }
 
@@ -92,6 +114,9 @@ class OffreType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Offre::class,
+            'helloasso_libelle' => null,
+            'helloasso_url' => null,
+            'helloasso_actif' => false,
         ]);
     }
 }

@@ -3,64 +3,98 @@
 {% block title %}{{ offre.titre }}{% endblock %}
 
 {% block body %}
-    <section class="container py-5">
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-10">
+<section class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-9">
 
-                <h1 class="mb-4">
-                    {{ offre.titre }}
-                </h1>
+            <h1 class="mb-4 text-center page-title-orange">
+                {{ offre.titre }}
+            </h1>
 
-                {% if offre.image %}
-                    <div class="mb-4">
-                        <img
-                            src="{{ offre.image.chemin }}"
-                            alt="{{ offre.image.texteAlternatif ?? offre.titre }}"
-                            class="img-fluid rounded"
-                        >
+            <article class="card shadow-sm border-0">
+                <div class="card-body p-4 p-md-5">
+
+                    {% if offre.image %}
+                        <div class="bg-warning-subtle rounded p-4 mb-5 text-center">
+                            <img
+                                src="{{ offre.image.chemin }}"
+                                alt="{{ offre.image.texteAlternatif ?: offre.titre }}"
+                                class="img-fluid rounded shadow-sm editorial-image"
+                            >
+                        </div>
+                    {% endif %}
+
+                    <div class="offre-content text-justify mb-5">
+                        {{ offre.description|nl2br }}
                     </div>
-                {% endif %}
 
-                <div class="mb-4">
-                    {{ offre.description|nl2br }}
+                    <div class="row g-3 mb-4">
+
+                        {% if offre.horaires %}
+                            <div class="col-12 col-md-6">
+                                <div class="bg-light rounded p-3 h-100">
+                                    <strong>Horaires</strong><br>
+                                    {{ offre.horaires }}
+                                </div>
+                            </div>
+                        {% endif %}
+
+                        {% if offre.lieu %}
+                            <div class="col-12 col-md-6">
+                                <div class="bg-light rounded p-3 h-100">
+                                    <strong>Lieu</strong><br>
+                                    {{ offre.lieu }}
+                                </div>
+                            </div>
+                        {% endif %}
+
+                        {% if offre.niveau %}
+                            <div class="col-12 col-md-6">
+                                <div class="bg-light rounded p-3 h-100">
+                                    <strong>Niveau</strong><br>
+                                    {{ offre.niveau }}
+                                </div>
+                            </div>
+                        {% endif %}
+
+                        {% if offre.publicVise %}
+                            <div class="col-12 col-md-6">
+                                <div class="bg-light rounded p-3 h-100">
+                                    <strong>Public visé</strong><br>
+                                    {{ offre.publicVise }}
+                                </div>
+                            </div>
+                        {% endif %}
+
+                    </div>
+
+                    {% if offre.lienExterne and offre.lienExterne.actif %}
+                        <div class="text-center mt-5">
+                            <a
+                                href="{{ offre.lienExterne.urlHelloasso }}"
+                                class="btn btn-warning btn-lg"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                {{ offre.lienExterne.libelle }}
+                            </a>
+
+                            <p class="small text-muted mt-3 mb-0">
+                                Paiement sécurisé via HelloAsso.
+                            </p>
+                        </div>
+                    {% else %}
+                        <div class="bg-warning-subtle rounded p-4 mt-5 text-center">
+                            <p class="mb-0 fw-bold">
+                                Inscription bientôt disponible.
+                            </p>
+                        </div>
+                    {% endif %}
+
                 </div>
+            </article>
 
-                {% if offre.horaires %}
-                    <p>
-                        <strong>Horaires :</strong>
-                        {{ offre.horaires }}
-                    </p>
-                {% endif %}
-
-                {% if offre.lieu %}
-                    <p>
-                        <strong>Lieu :</strong>
-                        {{ offre.lieu }}
-                    </p>
-                {% endif %}
-
-                {% if offre.niveau %}
-                    <p>
-                        <strong>Niveau :</strong>
-                        {{ offre.niveau }}
-                    </p>
-                {% endif %}
-
-                {% if offre.publicVise %}
-                    <p>
-                        <strong>Public visé :</strong>
-                        {{ offre.publicVise }}
-                    </p>
-                {% endif %}
-
-                {% if offre.categorieOffre %}
-                    <p>
-                        <strong>Catégorie :</strong>
-                        {{ offre.categorieOffre.nom }}
-                    </p>
-                {% endif %}
-
-            </div>
         </div>
-    </section>
+    </div>
+</section>
 {% endblock %}
