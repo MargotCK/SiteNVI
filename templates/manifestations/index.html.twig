@@ -1,20 +1,61 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ManifestationsController!{% endblock %}
+{% block title %}
+    {% if contenuEditorial %}
+        {{ contenuEditorial.titre }}
+    {% else %}
+        Agenda
+    {% endif %}
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<section class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-9">
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+            <h1 class="mb-3 text-center page-title-orange">Agenda</h1>
+            
+            {% if contenuEditorial %}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/nadia/Desktop/SiteNVI/src/Controller/ManifestationsController.php</code></li>
-        <li>Your template at <code>C:/Users/nadia/Desktop/SiteNVI/templates/manifestations/index.html.twig</code></li>
-    </ul>
-</div>
+                <article class="card shadow-sm border-0">
+                    <div class="card-body p-4 p-md-5 text-justify">
+
+                        <div class="text-center mb-4">
+                            <h2 class="h3 mb-0 page-title-orange">
+                                {{ contenuEditorial.titre }}
+                            </h2>
+                        </div>
+
+                        {% if contenuEditorial.image %}
+                            <div class="bg-warning-subtle rounded p-4 mb-5 text-center">
+                                <img
+                                    src="{{ contenuEditorial.image.chemin }}"
+                                    alt="{{ contenuEditorial.image.texteAlternatif ?: contenuEditorial.titre }}"
+                                    class="img-fluid rounded shadow-sm editorial-image"
+                                >
+                            </div>
+                        {% endif %}
+
+                        {% if contenuEditorial.contenu %}
+                            <div class="fs-5 editorial-content agenda-content">
+                                {{ contenuEditorial.contenu|nl2br }}
+                            </div>
+                        {% endif %}
+
+                    </div>
+                </article>
+
+            {% else %}
+
+                <div class="bg-warning-subtle rounded p-4 text-center">
+                    <p class="mb-0">
+                        L’agenda du mois sera bientôt disponible.
+                    </p>
+                </div>
+
+            {% endif %}
+
+        </div>
+    </div>
+</section>
 {% endblock %}

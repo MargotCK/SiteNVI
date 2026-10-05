@@ -29,7 +29,7 @@ body {
     Le main représente le contenu principal de chaque page.
     flex: 1 lui permet de prendre tout l’espace disponible
     entre la navbar et le footer.
-    
+
     Résultat :
     si une page a peu de contenu, le footer reste quand même
     collé en bas de l’écran.
@@ -38,6 +38,10 @@ main {
     flex: 1;
 }
 
+/* ==================================================
+    TEXTES GÉNÉRAUX
+   ================================================== */
+
 /*
     Justifie les paragraphes des pages de contenu statique.
     Utilisé notamment pour les pages :
@@ -45,6 +49,7 @@ main {
     - Adhésion
     - Mentions légales
     - Cookies
+    - Agenda
 */
 .text-justify p {
     text-align: justify;
@@ -56,6 +61,35 @@ main {
 */
 .page-title-orange {
     color: #f79330;
+}
+
+/*
+    Mise en page du contenu de l'agenda mensuel.
+    Le contenu est saisi depuis le back office dans Contenus éditoriaux.
+*/
+.agenda-content {
+    max-width: 760px;
+    margin: 0 auto;
+    line-height: 1.8;
+    text-align: justify;
+}
+
+.agenda-content p {
+    margin-bottom: 1.2rem;
+}
+
+.agenda-content ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 1.5rem 0;
+}
+
+.agenda-content li {
+    background-color: #fff4df;
+    border-left: 4px solid #f6a400;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.75rem;
 }
 
 /* ==================================================
@@ -488,4 +522,25 @@ Apparence des liens principaux :
     .contenu-editorial-content {
         text-align: left;
     }
+}
+/* 
+ * Contenus éditoriaux
+ * Image responsive utilisée sur les pages de contenu :
+ * - Manifestations
+ * - Dates mémorables
+ * - Personnalités inspirantes
+ * - Ressources éducatives
+ * - Articles éditoriaux
+ */
+.editorial-image {
+    width: 100%;
+    max-height: 520px;
+    object-fit: contain;
+}
+
+/*
+ * Améliore la lisibilité des textes éditoriaux.
+ */
+.editorial-content {
+    line-height: 1.8;
 }
