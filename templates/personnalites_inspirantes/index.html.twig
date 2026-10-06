@@ -13,19 +13,19 @@
     <div class="row justify-content-center">
         <div class="col-12 col-lg-9">
 
-            <h1 class="mb-4 text-center">Personnalités inspirantes</h1>
+            <h1 class="mb-4 text-center page-title-orange">Personnalités inspirantes</h1>
 
             {% if contenuEditorial %}
 
                 <article class="card shadow-sm border-0">
-                    <div class="card-body p-4 p-md-5">
+                    <div class="card-body p-4 p-md-5 text-justify">
 
-                        <h2 class="h3 mb-4 text-center">
+                        <h2 class="h3 mb-4 text-center page-title-orange">
                             {{ contenuEditorial.titre }}
                         </h2>
 
                         {% if contenuEditorial.image %}
-                            <div class="text-center mb-4">
+                            <div class="bg-warning-subtle rounded p-4 mb-5 text-center">
                                 <img
                                     src="{{ contenuEditorial.image.chemin }}"
                                     alt="{{ contenuEditorial.image.texteAlternatif ?: contenuEditorial.titre }}"
@@ -35,7 +35,7 @@
                         {% endif %}
 
                         <div class="fs-5 editorial-content">
-                            {{ contenuEditorial.contenu|raw }}
+                            {{ contenuEditorial.contenu|nl2br }}
                         </div>
 
                     </div>
@@ -43,8 +43,10 @@
 
             {% else %}
 
-                <div class="alert alert-info text-center">
-                    Aucun contenu n’est publié pour le moment dans cette rubrique.
+                <div class="bg-warning-subtle rounded p-4 text-center">
+                    <p class="mb-0 fw-bold">
+                        Aucun contenu n’est publié pour le moment dans cette rubrique.
+                    </p>
                 </div>
 
             {% endif %}
