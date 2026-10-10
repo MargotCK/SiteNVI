@@ -77,10 +77,18 @@ main {
 }
 
 /*
-    Mise en page du contenu de l'agenda mensuel.
-    Le contenu est saisi depuis le back office dans Contenus éditoriaux.
+    Mise en page commune des contenus rédigés.
+    Utilisé pour :
+    - Agenda
+    - Dates mémorables
+    - Personnalités inspirantes
+    - Ressources éducatives
+    - Offres publiques
+    - Événements
 */
-.agenda-content {
+.editorial-content,
+.agenda-content,
+.offre-content {
     max-width: 760px;
     margin: 0 auto;
     line-height: 1.6;
@@ -88,6 +96,15 @@ main {
     text-align: justify;
 }
 
+.editorial-content p,
+.agenda-content p,
+.offre-content p {
+    margin-bottom: 1.25rem;
+}
+
+/*
+    Mise en forme des listes éventuelles dans l'agenda.
+*/
 .agenda-content ul {
     list-style: none;
     padding-left: 0;
@@ -100,53 +117,6 @@ main {
     border-radius: 0.5rem;
     padding: 0.75rem 1rem;
     margin-bottom: 0.75rem;
-}
-
-/*
-    Justifie les contenus éditoriaux dynamiques.
-    Utilisé pour :
-    - Dates mémorables
-    - Personnalités inspirantes
-    - Ressources éducatives
-    - Agenda
-*/
-.editorial-content {
-    max-width: 760px;
-    margin: 0 auto;
-    line-height: 1.6;
-    font-size: 1rem;
-    text-align: justify;
-}
-
-/*
-    Mise en page des pages d'offres publiques.
-    Utilisé pour les cours et les événements.
-*/
-.offre-content {
-    max-width: 760px;
-    margin: 0 auto;
-    line-height: 1.6;
-    font-size: 1rem;
-    text-align: justify;
-}
-
-/*
-    Réduit l'espacement visuel dans les contenus saisis depuis le back office.
-*/
-.editorial-content,
-.agenda-content,
-.offre-content {
-    max-width: 760px;
-    margin: 0 auto;
-    line-height: 1.5;
-    font-size: 1rem;
-    text-align: justify;
-}
-
-.editorial-content p,
-.agenda-content p,
-.offre-content p {
-    margin-bottom: 0.6rem;
 }
 /* ==================================================
     HEADER DU SITE
