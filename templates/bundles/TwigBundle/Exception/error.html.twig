@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Erreur{% endblock %}
+
+{% block body %}
+<section class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-8 text-center">
+
+            <h1 class="mb-3 page-title-orange">Oups, une erreur est survenue</h1>
+
+            <p class="lead mb-4">
+                Une erreur empêche l’affichage de cette page.
+            </p>
+
+            <div class="bg-warning-subtle rounded p-4 mb-4">
+                <p class="mb-0">
+                    Vous pouvez revenir à l’accueil et poursuivre votre navigation.
+                </p>
+            </div>
+
+            <a href="{{ path('app_home') }}" class="btn btn-warning">
+                Retour à l’accueil
+            </a>
+
+        </div>
+    </div>
+</section>
+{% endblock %}

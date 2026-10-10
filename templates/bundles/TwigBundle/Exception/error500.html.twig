@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Erreur serveur{% endblock %}
+
+{% block body %}
+<section class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-8 text-center">
+
+            <h1 class="mb-3 page-title-orange">Une erreur est survenue</h1>
+
+            <p class="lead mb-4">
+                Le site rencontre momentanément un problème technique.
+            </p>
+
+            <div class="bg-warning-subtle rounded p-4 mb-4">
+                <p class="mb-0">
+                    Veuillez réessayer dans quelques instants.
+                </p>
+            </div>
+
+            <a href="{{ path('app_home') }}" class="btn btn-warning">
+                Retour à l’accueil
+            </a>
+
+        </div>
+    </div>
+</section>
+{% endblock %}
