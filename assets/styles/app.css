@@ -51,8 +51,21 @@ main {
     - Cookies
     - Agenda
 */
-.text-justify p {
+.text-justify,
+.editorial-content,
+.agenda-content,
+.offre-content,
+.accordion-body {
     text-align: justify;
+}
+
+.text-justify p,
+.editorial-content p,
+.agenda-content p,
+.offre-content p,
+.accordion-body p {
+    text-align: justify;
+    margin-bottom: 0.8rem;
 }
 
 /*
@@ -70,12 +83,9 @@ main {
 .agenda-content {
     max-width: 760px;
     margin: 0 auto;
-    line-height: 1.8;
+    line-height: 1.6;
+    font-size: 1rem;
     text-align: justify;
-}
-
-.agenda-content p {
-    margin-bottom: 1.2rem;
 }
 
 .agenda-content ul {
@@ -103,12 +113,40 @@ main {
 .editorial-content {
     max-width: 760px;
     margin: 0 auto;
-    line-height: 1.8;
+    line-height: 1.6;
+    font-size: 1rem;
     text-align: justify;
 }
 
-.editorial-content p {
-    margin-bottom: 1.2rem;
+/*
+    Mise en page des pages d'offres publiques.
+    Utilisé pour les cours et les événements.
+*/
+.offre-content {
+    max-width: 760px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-size: 1rem;
+    text-align: justify;
+}
+
+/*
+    Réduit l'espacement visuel dans les contenus saisis depuis le back office.
+*/
+.editorial-content,
+.agenda-content,
+.offre-content {
+    max-width: 760px;
+    margin: 0 auto;
+    line-height: 1.5;
+    font-size: 1rem;
+    text-align: justify;
+}
+
+.editorial-content p,
+.agenda-content p,
+.offre-content p {
+    margin-bottom: 0.6rem;
 }
 /* ==================================================
     HEADER DU SITE

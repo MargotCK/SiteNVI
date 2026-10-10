@@ -13,7 +13,7 @@
     <div class="row justify-content-center">
         <div class="col-12 col-lg-9">
 
-            <h1 class="mb-4 text-center page-title-orange">Dates mémorables</h1>
+            <h1 class="mb-2 text-center page-title-orange">Dates mémorables</h1>
 
             {% if contenuEditorial %}
 
@@ -34,10 +34,13 @@
                             </div>
                         {% endif %}
 
-                        <div class="fs-5 editorial-content">
-                            {{ contenuEditorial.contenu|nl2br }}
+                        <div class="editorial-content">
+                            {% for paragraphe in contenuEditorial.contenu|split("\n\n") %}
+                                {% if paragraphe|trim is not empty %}
+                                    <p>{{ paragraphe|trim|nl2br }}</p>
+                                {% endif %}
+                            {% endfor %}
                         </div>
-
                     </div>
                 </article>
 
