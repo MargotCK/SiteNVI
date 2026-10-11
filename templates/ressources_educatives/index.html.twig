@@ -35,11 +35,7 @@
                         {% endif %}
 
                         <div class="editorial-content">
-                            {% for paragraphe in contenuEditorial.contenu|split("\n\n") %}
-                                {% if paragraphe|trim is not empty %}
-                                    <p>{{ paragraphe|trim|nl2br }}</p>
-                                {% endif %}
-                            {% endfor %}
+                            {{ contenuEditorial.contenu|backoffice_text }}
                         </div>
 
                     </div>
