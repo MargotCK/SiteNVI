@@ -39,6 +39,12 @@ class Carrousel
     #[ORM\ManyToOne(inversedBy: 'carrousels')]
     private ?ContenuEditorial $contenuEditorial = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $lienHelloasso = null;
+
+    #[ORM\Column(length: 100, nullable: true)]
+    private ?string $libelleBouton = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -104,14 +110,52 @@ class Carrousel
         return $this;
     }
     
+    public function getLienHelloasso(): ?string
+    {
+        return $this->lienHelloasso;
+    }
+
+    public function setLienHelloasso(?string $lienHelloasso): static
+    {
+        $this->lienHelloasso = $lienHelloasso;
+
+        return $this;
+    }
+
+    public function getLibelleBouton(): ?string
+    {
+        return $this->libelleBouton;
+    }
+
+    public function setLibelleBouton(?string $libelleBouton): static
+    {
+        $this->libelleBouton = $libelleBouton;
+
+        return $this;
+    }
+
     #[Assert\Callback]
     public function validateLienUnique(ExecutionContextInterface $context): void
     {
-        if ($this->offre !== null && $this->contenuEditorial !== null) {
+        $liensRenseignes = 0;
+
+        if ($this->offre !== null) {
+            $liensRenseignes++;
+        }
+
+        if ($this->contenuEditorial !== null) {
+            $liensRenseignes++;
+        }
+
+        if ($this->lienHelloasso !== null && trim($this->lienHelloasso) !== '') {
+            $liensRenseignes++;
+        }
+
+        if ($liensRenseignes > 1) {
             $context->buildViolation(
-                '/!\ Une slide ne peut pas être liée à la fois à une offre et à un contenu éditorial.'
+                '/!\ Une slide ne peut être liée qu’à une seule destination : offre, contenu éditorial ou lien HelloAsso.'
             )
-                ->atPath('contenuEditorial')
+                ->atPath('lienHelloasso')
                 ->addViolation();
         }
     }

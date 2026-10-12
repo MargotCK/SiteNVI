@@ -10,6 +10,8 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -48,6 +50,18 @@ class CarrouselType extends AbstractType
                 'label' => 'Contenu éditorial associé',
                 'placeholder' => 'Aucun contenu éditorial',
                 'required' => false,
+            ])
+
+            ->add('lienHelloasso', UrlType::class, [
+                'label' => 'Lien HelloAsso direct',
+                'required' => false,
+                'help' => 'Optionnel. À utiliser si la slide doit mener directement vers HelloAsso, sans offre ni contenu éditorial associé.',
+            ])
+
+            ->add('libelleBouton', TextType::class, [
+                'label' => 'Libellé du bouton',
+                'required' => false,
+                'help' => 'Exemple : Je réserve, Je commande, J’adhère.',
             ])
         ;
     }

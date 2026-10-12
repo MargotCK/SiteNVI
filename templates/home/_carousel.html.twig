@@ -19,7 +19,7 @@
             {% for carrousel in carrousels %}
                 <div class="carousel-item {{ loop.first ? 'active' : '' }}">
 
-                    {% if not carrousel.offre and not carrousel.contenuEditorial %}
+                    {% if not carrousel.offre and not carrousel.contenuEditorial and not carrousel.lienHelloasso %}
                         <button
                             type="button"
                             class="border-0 p-0 bg-transparent w-100"
@@ -68,6 +68,17 @@
                                 Lire l’article
                             </a>
                         </div>
+                    {% elseif carrousel.lienHelloasso %}
+                        <div class="carousel-caption">
+                            <a
+                                href="{{ carrousel.lienHelloasso }}"
+                                class="btn btn-warning"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                {{ carrousel.libelleBouton ?: 'Accéder à HelloAsso' }}
+                            </a>
+                        </div>
                     {% endif %}
 
                 </div>
@@ -108,7 +119,7 @@
     </div>
 
     {% for carrousel in carrousels %}
-        {% if not carrousel.offre and not carrousel.contenuEditorial %}
+        {% if not carrousel.offre and not carrousel.contenuEditorial and not carrousel.lienHelloasso %}
             <div
                 class="modal fade"
                 id="bdModal{{ carrousel.id }}"
