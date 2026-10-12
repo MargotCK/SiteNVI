@@ -49,12 +49,25 @@
                         </div>
                     </div>
 
+                    <div class="mb-3">
+                        {{ form_row(form.lienHelloasso) }}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form_row(form.libelleBouton) }}
+                    </div>
+
                     <button type="submit" class="btn btn-warning w-100">
                         Ajouter au carrousel
                     </button>
 
                 {{ form_end(form) }}
 
+                <div class="text-center mt-3">
+                    <a href="{{ path('app_admin_carrousel_index') }}">
+                        Retour à la liste
+                    </a>
+                </div>
             </div>
         </div>
     </section>
