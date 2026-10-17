@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier une image{% endblock %}
+
+{% block body %}
+<section class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+
+            <h1 class="mb-4 text-center">
+                Modifier une image
+            </h1>
+
+            <div class="text-center mb-4">
+                <img
+                    src="{{ image.chemin }}"
+                    alt="{{ image.texteAlternatif ?: 'Image NVI' }}"
+                    class="img-fluid rounded"
+                    style="max-height: 300px;"
+                >
+            </div>
+
+            <p class="text-center">
+                {{ image.nomFichier }}
+            </p>
+
+            {{ form_start(form) }}
+
+                <div class="mb-3">
+                    {{ form_row(form.texteAlternatif) }}
+                </div>
+
+                <button type="submit" class="btn btn-warning w-100">
+                    Enregistrer les modifications
+                </button>
+
+            {{ form_end(form) }}
+
+            <div class="text-center mt-3">
+                <a href="{{ path('app_admin_image_index') }}">
+                    Retour à la liste
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endblock %}

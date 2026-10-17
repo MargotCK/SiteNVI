@@ -11,15 +11,6 @@
                     Ajouter une image
                 </h1>
 
-                <div class="text-center mb-4">
-                    <a
-                        href="{{ path('app_admin_dashboard') }}"
-                        class="btn btn-outline-secondary"
-                    >
-                        Retour au tableau de bord
-                    </a>
-                </div>
-
                 {% for message in app.flashes('success') %}
                     <div class="alert alert-success">
                         {{ message }}
@@ -54,7 +45,11 @@
                     </button>
 
                 {{ form_end(form) }}
-
+                    <div class="text-center mt-3">
+                        <a href="{{ path('app_admin_image_index') }}">
+                            Retour à la liste
+                        </a>
+                    </div>
             </div>
         </div>
     </section>
